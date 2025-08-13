@@ -117,3 +117,39 @@ while True:
       print("the end")
       break
 ----------------------------------------
+#定義空字典
+a = {}
+b = dict()
+
+print(type(a))
+print(type(b))
+
+#字典宣告
+#dict_name = {'key1': "value1",'key2' : "value2"}
+
+---------------------
+student_a = {'name':'J','main':"piano",'submain':"write"}
+print(student_a)
+print(type(student_a))
+-------------------------------
+stu = [1,2,3,4,5]
+while (len(stu) > 0):
+  print('unsign:' , end=" " )
+  for iteml in stu:
+    print(f'{iteml}',end = ' ')
+  print()
+  num = int(input("sign up by ur num: "))
+  if num < 1 or num >5:
+    print('not exist')
+    continue
+  else:
+    find = False
+    for i , item2 in enumerate(stu):
+      if item2 == num:
+        del stu[i]
+        find = True
+        break
+    if find == False:
+      print(f'{num}  has already signed up')
+print('the end')
+-----------------------------------------

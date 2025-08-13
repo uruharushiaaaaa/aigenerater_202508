@@ -2,3 +2,179 @@
 
 num_list1 = (1,2,3,4,5,6,7,8)
 num_list2 = (10,20,30,40,50,60,70,80)
+----------------
+num_list3 = num_list1 + num_list2
+num_list3
+------------------
+num_list3[0:5]
+---------------
+name_tuple = ("A","B","C","D","E","F","G","H","I","J","K","L")
+name = input("Enter a letter:   ")
+
+if name in name_tuple:
+  idx = name_tuple.index(name)
+  print("index = ", idx + 1)  #list從第0項開始起算
+else:
+  print("Letter Not exist")
+
+--------------------------------------
+pwd = tuple()
+pwd
+
+import os
+import sys
+# pwd = tuple()
+if pwd == ():
+  text = input("設定密碼")
+
+  pwd = (text,)
+  print("設定的密碼為:  ",pwd)
+else:
+  print("已設定密碼")
+  ret = input("要更改密碼嗎? (y/n) ")
+  if ret == "y":
+    text = input("輸入目前密碼")
+    if text == pwd[0]:
+      print(pwd)
+      text = input("輸入一個新密碼")
+      pwd = (text,)
+      print("新密碼為:  ", pwd)
+    else:
+      print("輸入密碼錯誤")
+  else:
+    print("關閉程式")
+    sys._exit()
+
+----------------------------
+# for value in range(start,end-1,step(間隔)): statement
+# for value in list : statement
+import os
+total = 0
+end = int(input("到哪裡停止"))
+for x in range(1,end+1 ):
+  total = total + x
+print(total)
+---------------------------
+list_a = ["A","B","C"]
+
+for element in list_a:
+  print(element)
+-------------------------
+num = [32,64,96]
+
+print("idx1 = ",num[0])
+print("idx2 = ",num[1])
+print("idx3 = ",num[2])
+
+-----------------------
+name_list = ("A","B","C")
+sc_list = (("Eng",90,"Math",80,"Chn",45),
+      ("Eng",48,"Math",51,"Chn",65),
+      ("Eng",100,"Math",30,"Chn",55))
+
+name = input("Enter student's name")
+if name in name_list:
+  idx = name_list.index(name)
+  print(*sc_list[idx])
+else:
+  print("Not Exist")
+
+--------------------------------------
+num = int(input("a number"))
+for num in range(1,num+1):
+  if (num %3 == 0) and (num %7 == 0):
+    print(num, )
+
+
+-------------------------------
+strl = []
+for k in range(1,4):
+  s = input("輸入第 %d 個字串"%(k))
+  strl.append(s)
+  print(*strl)
+----------------------
+numbers = [1,2,3,4,5,2,7,1,4,4,6]
+num_odd = []
+num_even = []
+for j in numbers:
+  if j %2 == 1 and j not in num_odd:
+    num_odd.append(j)
+print(num_odd)
+
+--------------------------
+import random
+import os
+num_l = []
+
+for i in range(1,6):
+  l = int(input("輸入數值"))
+  if l not in num_l:
+    num_l.append(l)
+
+
+print(*num_l)
+
+---------------------
+cmp = ['A',"B",'C','D',"E"]
+for n,m in enumerate(cmp):
+  print(n+1, "-->", m)
+--------------
+sq = []
+r = int(input("a number: "))
+if r > 10:
+  r = 10
+for r in range(1,r+1):
+  r = r**2
+  sq.append(r)
+print(*sq)
+print(len(sq))
+--------------------------
+print(f' max: {max(sq)} \n min: {min(sq)} \n tot: {sum(sq)} \n avg: {(sum(sq))/len(sq)}  ')
+-----------------------------
+for X in range(2,10):
+  for Y in range(1,10):
+    print("%2d * %2d = %2d" % (X,Y,X*Y), end = " ")
+  print()
+--------------------
+for g in range(1,11):
+  for h in range (1,g+1):
+    print('*', end="")
+  print()
+---------------------
+buyers = [['J',1030],['C',893],['D',2000],['JD',990],['DA',2110]]
+
+vip = []
+gold = []
+
+for z in buyers:
+  if z[1] > 1000:
+    vip.append(z[0])
+  else:
+    gold.append(z[0])
+print("Vip: ",*vip)
+print("Gold: ",*gold)
+----------------------------
+for c in range(1,11):
+  if c %3 == 0:
+    continue
+  print(c,end=' ')
+-----------------------
+for d in range(1,11):
+  if d %3 == 0:
+    break
+  print(d,end=' ')
+--------------------------------
+score_list = [33,22,41,25,42,53,21,51,13]
+s = []
+count = 0
+
+for score in score_list:
+  if score < 30:
+    continue
+  count += 1
+  s.append(score)
+h = max(score_list)
+
+print("%d of them is above 30 pts, the total is %d pts" %(count,sum(s)))
+print("highest score is at pos %d , the score is %d pts"%(score_list.index(h)+1,h))
+-------------------------------------

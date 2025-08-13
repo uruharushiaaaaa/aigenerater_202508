@@ -84,3 +84,18 @@ while True:
 
 print(*s)
 -----------------------------------
+price = 50
+inflation_rate = 0.3
+year = 0
+flag = True
+
+while flag is True:
+  price = price*(1+inflation_rate)
+  year += 1
+
+  if price > 75:
+    flag = False
+print(f"過了 {year} 年\n")
+print(f'價格漲為%.2f'%(price))
+
+---------------------

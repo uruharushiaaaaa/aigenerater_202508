@@ -1,0 +1,11 @@
+players = ["A","B","C","D","E","F","G"]
+n = eval(input("輸入人數:  "))
+if n > len(players):
+  n = len(players) #列出人數不大於串列數
+index = 0
+for p in players:
+  if index == n:
+    break
+  print(p, end="")
+  index += 1
+print('\n共',index,"人")

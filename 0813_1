@@ -161,3 +161,56 @@ print("soli_xpos = ", so ['xpos'])
 print("soli_ypos = ", so ['ypos'])
 print("soli_sped = ", so ['speed'])
 print(so)
+
+---------------------------------
+stu_a = {'name':'J','main':'piano','sub_main':'write'}
+
+chn_sc = [88,88,90]
+math_sc = [77,66,55]
+eng_sc = [66,55,44]
+
+chn_tot = sum(chn_sc)
+eng_tot = sum(eng_sc)
+
+chn_avg = chn_tot/len(chn_sc)
+eng_avg = eng_tot/len(chn_sc)
+
+print(chn_avg,chn_tot,eng_avg,eng_tot)
+
+-------------------------------------
+#get()method 如果key不存在 出現替代值
+#keys() method 取得所有鍵
+#values() method 取得所有值
+#items() 取出dict的key & value
+#dict_name = {key1:value1,key2:value2}
+
+---------------------------------
+pop_lan = {'c':'1972','py':'1991','java':'1995'}
+ano_lan = {'c#':'microsoft',"java":'james 1996'}
+pop_lan
+---------------------
+pop_lan.update(ano_lan) 
+pop_lan
+----------------------
+del pop_lan['java']
+pop_lan
+----------------------
+ano_lan.clear() #clear清除
+ano_lan
+del ano_lan
+----------------------
+from ast import Yield
+M = {'n':'M','main':"piano"}
+Y = {'n':'Y','main':"violin"}
+J = {'n':'J','main':"hit"}
+
+students = {"M":M,"Y":Y,"J":J}
+
+#items 1.取key 2.取value
+
+for key,value in students.items():
+  print("dict:  ",key)
+  print(value['n'],value['main'])
+-----------------------------------------
+
+  

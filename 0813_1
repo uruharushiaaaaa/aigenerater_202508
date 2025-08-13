@@ -153,3 +153,11 @@ while (len(stu) > 0):
       print(f'{num}  has already signed up')
 print('the end')
 -----------------------------------------
+so = {'tag': 'red','score':3}
+so['xpos'] = 100 
+so['ypos'] = 30
+so['speed'] = 'slow'
+print("soli_xpos = ", so ['xpos'])
+print("soli_ypos = ", so ['ypos'])
+print("soli_sped = ", so ['speed'])
+print(so)

@@ -1,0 +1,43 @@
+!pip install gradio
+!pip install -q -U google-genai
+!pip install -q -U google-generativeai
+--------------------------
+import google.generativeai as genai
+from google.colab import userdata
+
+API_KEY = userdata.get("Gemini_Api_Key")
+genai.configure(api_key=API_KEY)
+
+#building model
+model = genai.GenerativeModel('gemini-2.0-flash')
+----------------------
+#test
+model = genai.GenerativeModel('gemini-2.0-flash')
+while(True):
+  response = model.generate_content(input(""))
+  print(response.text)
+----------------------------------
+prompt_text = "給我一個以下的故事:在一個充滿奇幻色彩的銀河之中，玩家將扮演一名被稱為「開拓者」的角色，登上星穹列車，展開一段橫跨不同行星的冒險旅程。 故事的核心圍繞著「星核」對各世界帶來的災難，玩家需要在旅途中解決這些災難，並探索宇宙的奧秘"
+
+response = model.generate_content(prompt_text)
+
+print(response.text)
+------------------------------
+#利用INPUT輸入結合生成式AI 創作文生圖 海底生物
+
+user_idea = input("input the feature whatever u want of ur creature ")
+
+prompt_spell = f'follow below features ,{user_idea},name it and give me its habitat and special ability '
+
+print(f"\n loading about , {user_idea}")
+response = model.generate_content(prompt_spell)
+
+print("\n--- here's ur own magical creature  ---")
+print(response.text)
+-------------------------
+prompt_text = "想十個魔法符咒的名稱,使用逗號分隔，例如:鏡中故我、春水初生..etc"
+response = model.generate_content(prompt_text)
+
+potions_names = response.text.split(',')
+print("符咒名稱列表: ", potions_names)
+print("第一個符咒名稱: ", potions_names[0])

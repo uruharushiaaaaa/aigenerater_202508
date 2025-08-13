@@ -1,0 +1,168 @@
+! pip install google.colab
+
+import os
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+------------------
+#格式化 %s 字串 %f 浮點數 %d整數
+# %ns: move +10 space(Eng words)
+# %".n"f float numbers
+print('%10s current age: %d weight %.2f kg'%(name,age,weight))
+
+--------------------------------
+#another type for output
+print(f'{name} current age:{age} weight {weight} kg')
+------------------------------
+s1 = 10000
+s2 = 100
+s3 = 1000000
+
+print("$ %7d"% s1)
+print("$ %7d"% s2)
+print("$ %7d"% s3)
+-----------------------------
+# end = ''(在''中空格、加符號都可) 不換行 OR 分隔
+
+print('789' , end = "/")
+print('456')
+print('456')
+----------------------------
+# +-*/ %取餘數 //取整數 **n次方
+# a%b ==> a divided by b 取餘數
+2 ** (1/2)
+--------------------------------
+a = 5
+b = 3
+print(a%b)
+print(a//b)
+----------------------------------
+# += -= *= /=
+a *= b
+print(a)
+print(b)
+----------------------
+print((1 < 2) and ("A" == "a"))
+print((-1 < 0) or (-1 > 100))
+print(not("A" != 'a'))
+print(not 2)
+print(2 or 3)
+print ('a' or 'b')
+------------------------
+#資料型態轉換 str字串 int整數 float浮點
+
+num1 = 222
+num2 = 333
+
+strl = str(num1) + str(num2)
+print(f"{strl}")
+print(f'{str(num1)+ str(num2)}')
+
+------------------------
+#input
+#eval:int和float整合
+name = input("name?")
+age = eval(input("age"))
+
+print(name, age)
+-------------------
+print("Enter some number")
+num1 = eval(input("num1: "))
+num2 = eval(input("num2: "))
+num3 = eval(input("num3: "))
+
+avg = (num1*4 + num2*4 + num3*2)/10
+
+print(f"{num1}  {num2}  {num3}" )
+print("  ")
+print(f"avg  1{avg}")
+--------------------------
+a = eval(input("input num:   "))
+
+if a % 2 == 0 :
+  print("even")
+else:
+  print("odd")
+------------------------------
+age = eval(input("Age? "))
+
+if age >= 18:
+  print("buy a fking cigarette")
+else:
+  print("U cannot buy a cigarette")
+----------------------
+num = eval(input("put a num range in 0 to 100:   "))
+
+if num >= 90:
+  print("A")
+elif num >= 80:
+  print("B")
+elif num >= 70:
+  print("C")
+elif num >= 60:
+  print("D")
+else:
+  print("FAILURE YOU ARE A FAILURE!!!")
+---------------------------
+num1 = eval(input("num1  "))
+num2 = eval(input("num2  "))
+num3 = eval(input("num3  8"))
+
+if not(num1 >= 60 and num2 >= 60 and num3 >= 60):
+  print("FAIL")
+else:
+  print("PASS")
+-----------------------------------
+# \n NewLine  \"雙引  \'單引  \\斜線
+
+print("1 \n")
+print("2")
+----------------------------
+a = [35, 29, 38,67,95,84,23,15]
+a[2]
+
+#0 == starting position
+#3 隔三格找一次
+a[0:4:2]
+--------------------------
+#list.append() 加在最後
+num = [1,2,3,4,5,6]
+num.append(7)
+num
+
+#list.insert(1,...) 把物件加到指定位置
+num.insert(0,0)
+num
+
+#list.pop()未指定時移除最後面物件
+num.pop(2)
+num
+
+#list.remove()一定要指定名字
+num.remove(3)
+num
+
+#list.count(???) 某物件出現的次數
+num.count(0)
+
+#list.reverse()反轉
+num.reverse()
+num
+#len長度 Max(Verstappen)最大值 Min
+
+len(num)
+max(num)
+min(num)
+sum(num)
+
+print(7 in num)
+print(4 not in num)
+-----------------------------------------
+adolf = [['Adolf Hitler' , 'Berlin' , '1945'],65,32,65,86,23,12,6]
+print("name  :  ",adolf[0][0])
+print("pos  :  ", adolf[0][1])
+print("death  :  ", adolf[0][2])
+
+--------------------------------
+

@@ -99,3 +99,21 @@ print(f"過了 {year} 年\n")
 print(f'價格漲為%.2f'%(price))
 
 ---------------------
+import random
+random_num = random.randint(1,100)
+while True:
+  user_guess = eval(input("choose a num between 1 and 100:  "))
+  if user_guess < random_num:
+    print("bigger")
+  elif user_guess > random_num:
+    print("smaller")
+  else:
+    print("oh god damn u fking lucky ")
+    play_again = input("play again?")
+    if play_again == "y" or play_again == "Y":
+      random_num = random.randint(1,100)
+      user_guess = None
+    else:
+      print("the end")
+      break
+----------------------------------------

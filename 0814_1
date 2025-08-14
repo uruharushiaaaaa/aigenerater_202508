@@ -73,3 +73,65 @@ while True:
     continue
 
 ----------------------------------
+
+#python function
+#build-in(內建) user-defined(自訂) lambda(匿名函數)
+
+#def function name(value1,value2,value3......)
+
+#沒有傳入參數
+
+def fa():
+  for i in range(2):
+    print('hello world')
+fa()
+
+------------------
+#有value
+def f(n):
+  print(n)
+x = 'hello world'
+f(x)
+f('python')
+f(123)
+-----------------------
+#傳入2 value
+def print_name(name,ans):
+  print(f'hello {name+ans}')
+
+name = input("name")
+ans = "  hi"
+print_name(name,ans)
+--------------------
+def g(n):
+  tmp = 1
+  for i in range(1,n+1):
+    tmp = tmp * i
+  return tmp
+x = g(5)
+print(x)
+print(g(20))
+----------------------
+def get_max_sc(sc_list):
+  max_sc = sc_list[0]
+
+  for sc in sc_list:
+    if sc > max_sc:
+      max_sc = sc
+  print(max_sc)
+  return max_sc
+---------------------------
+j_sc_list = [77,99,54,34]
+max_score = get_max_sc(j_sc_list)
+
+-----------------------------
+def get_sum_sc(sc_list):
+  sum_sc = 0
+  for sc in sc_list:
+    sum_sc += sc
+  print("The total is " , sum_sc)
+  return sum_sc
+sum_sc = get_sum_sc(j_sc_list)
+-----------------------------
+
+

@@ -1,0 +1,75 @@
+acc = {'GH':{'l_n':"A","f_n":"B","city":"TPE"},'KN':{'l_n':"C","f_n":"D","city":"BEI"}}
+
+for a,b in acc.items():
+  print(a)
+  print(b['l_n']+b['f_n']+ "  " +b['city']  )
+
+----------------------------------
+#用in來測試值
+
+drinks={'martini':{"vodka","vermouth"},
+    'black russian':{'vodka','vermouth'},
+    'white russian':{'cream','kahlua','vodka'},
+    'manhattan':{'rye','vermouth','bitters'},
+    'screwdrive':{'orange juice','vodka'}}
+
+for a,b in drinks.items():
+  if "vodka" in b and "vermouth" in b:
+    print(a)
+
+--------------------------------
+#含vodka 不含cream、vermouth
+
+for a,b in drinks.items():
+  if 'vodka' in b and not('cream' in b and 'vermouth' in b):
+    print(a)
+
+---------------------------
+fruit = {}
+for i in range(2):
+  key = input("Enter key for fruits: ")
+  value = input("Enter key for fruits: ")
+  fruit[key] = value
+
+fruit
+--------------------------------
+for x,y in fruit.items():
+  print(x," ",y)
+
+------------------------
+table = '''
+======Dictionary======
+/n新增、修改單字
+/del刪除單字
+/s查單字
+/end結束程式
+'''
+
+dict_1 = {}
+while True:
+  print(table)
+  function = input()
+  if function == '/n':
+    eng = input('Enter Eng word: ')
+    chn = input('Enter Chn explanation:')
+    dict_1[eng] = chn
+    print(f'新增 {eng} 成功了')
+  elif function == '/del':
+    eng = input('Enter Eng word: ')
+    if eng in dict_1:
+      del dict_1[eng]
+      print(f'刪除 {eng} 成功了')
+  elif function == '/s':
+    eng = input("Enter Eng word: ")
+    if eng in dict_1:
+      print(f'{eng}的中文解釋是: {dict_1[eng]}')
+    else:
+      print('not found')
+  elif function == '/end':
+    print('結束程式')
+    break
+  else:
+    print('輸入錯誤')
+    continue
+
+----------------------------------

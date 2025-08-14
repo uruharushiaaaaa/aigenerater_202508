@@ -133,5 +133,188 @@ def get_sum_sc(sc_list):
   return sum_sc
 sum_sc = get_sum_sc(j_sc_list)
 -----------------------------
+def get_avg_sc(sc_list):
+  avg_sc = sum_sc/len(sc_list)
+  print("The avg is " , avg_sc)
+  return avg_sc
+avg_sc = get_avg_sc(j_sc_list)
+
+-----------------------------
+teams = ['Alpine','RBRacing','Ferrari','McLaren','RBvisa','Mercades']
+
+def teams_append(teams,team_name):
+  teams.append(team_name)
+  return teams
+
+teams_append(teams,"AstonMartin")
+----------------------------
+def score(score):
+  if score >= 90:
+    return "A"
+  elif score >= 80:
+    return "B"
+  elif score >= 70:
+    return "C"
+  else:
+    return "D"
+
+
+print(score(int(input("Enter ur score"))))
+---------------------
+def p99(li):
+  for y in range(1,10):
+    result = []
+    for x in li:
+      s = '%2d x %2d = %2d'%(x,y,x*y)
+      result.append(s)
+    print(result)
+
+p99([2,3,4,5])
+print('')
+p99([6,7,8,9])
+------------------------------
+w = 21
+def outer(x): #2nd
+  def inner(y):  #4th
+    z = w+x+y
+    print(z)  #5th
+  inner(1) #3rd
+
+outer(88)  #1st
+----------------------------
+def maker(n):  #2nd
+  def action(x): #4th
+    return x * n
+  return action #3rd action returns to f (f=action)
+
+f = maker(2) #1st
+print(f) #action retuen 的值(某個記憶體位置)
+print(f(3))
+print(f(4))
+-----------------------
+import random
+s = []
+
+def inpNum(times):
+  while len(s)< times :
+    num = int(input("Enter a num"))
+    if num not in s:
+      s.append(num)
+    else:
+      continue
+  return s
+
+
+inpNum(6)
+--------------------------
+store = 'car store'
+cars = ["A","B","C","D","E","F","G"]
+
+price = [180,320,124,657,123,1245,120]
+car_dict = dict(zip(cars,price))
+
+def welcome(store,car_dict):
+  print('welcome '+store)
+  print(car_dict)
+def checkout(car_dict):
+  cart =[]
+  tot = 0
+  while True:
+    msg = input("Which to buy(press q to quit): ")
+    if msg == 'q' or msg == 'Q':
+      print('the end')
+      break
+    elif msg not in cars:
+      print('Enter again')
+      continue
+    else:
+      cart.append(msg)
+      cart_cost = car_dict.get(msg)
+      tot += cart_cost
+  print('購買商品 ',cart)
+  print('總價',tot,'萬')
+welcome(store,car_dict)
+checkout(car_dict)
+------------------------------
+#交集
+a = {1,2,3,4}
+b = {2,5,7}
+c = {1,2,3,4,5,6,7}
+
+ab = a&b
+ba = a.intersection(b)   # &相當於intersection()
+
+print(ab)
+print(ba)
+
+#聯集
+u = a|b
+u_2 = a.union(b)
+
+print(u)
+print(u_2)
+
+#差集
+diff = a-b
+diff_2 = a.difference(b)
+print(diff)
+print(diff_2)
+
+#對稱差集 AUB-A&B AB都有但不交集
+
+s_diff = b^a
+s_diff2 = a.symmetric_difference(b)
+print(s_diff)
+print(s_diff2)
+
+---------------------
+#add
+k = {1,2,3,4,5,6,7}
+k.add(8)
+print(k)
+
+#update
+a = {1,2,3,4}
+b = {4,5,6,7}
+c = [7,8,9]
+d = (10,11,12)
+
+a.update(b)
+print(a)
+a.update(c)
+print(a)
+a.update(d)
+print(a)
+
+---------------------------
+#例外 excpet 承接前面錯誤
+a = 22
+b = 33
+
+try:
+  if a < b: #if 如果成立則下一行變數錯誤，跑去except
+    print(n) #變數錯誤
+except:
+  print('except')
+else:
+  print('else')
+print("end")
+
+------------------------------
+import time
+
+
+try:
+  time.sleep(5)
+  num = int(input('enter a num'))
+  print('{0} 為 {1}'.format(num, '奇數' if num % 2 else '偶數'))
+except ValueError:
+  print('輸入阿拉伯數字')
+except (EOFError,KeyboardInterrupt):
+  print('使用者中斷程式')
+
+except:
+  print('我也不知道發生甚麼')
+--------------------------------------
 
 

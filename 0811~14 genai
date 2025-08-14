@@ -1,0 +1,140 @@
+!pip install gradio
+!pip install -q -U google-genai
+!pip install -q -U google-generativeai
+--------------------------
+import google.generativeai as genai
+from google.colab import userdata
+
+API_KEY = userdata.get("Gemini_Api_Key")
+genai.configure(api_key=API_KEY)
+
+#building model
+model = genai.GenerativeModel('gemini-2.0-flash')
+----------------------
+#test
+model = genai.GenerativeModel('gemini-2.0-flash')
+while(True):
+  response = model.generate_content(input(""))
+  print(response.text)
+----------------------------------
+prompt_text = "給我一個以下的故事:在一個充滿奇幻色彩的銀河之中，玩家將扮演一名被稱為「開拓者」的角色，登上星穹列車，展開一段橫跨不同行星的冒險旅程。 故事的核心圍繞著「星核」對各世界帶來的災難，玩家需要在旅途中解決這些災難，並探索宇宙的奧秘"
+
+response = model.generate_content(prompt_text)
+
+print(response.text)
+------------------------------
+#利用INPUT輸入結合生成式AI 創作文生圖 海底生物
+
+user_idea = input("input the feature whatever u want of ur creature ")
+
+prompt_spell = f'follow below features ,{user_idea},name it and give me its habitat and special ability '
+
+print(f"\n loading about , {user_idea}")
+response = model.generate_content(prompt_spell)
+
+print("\n--- here's ur own magical creature  ---")
+print(response.text)
+-------------------------
+prompt_text = "想十個魔法符咒的名稱,使用逗號分隔，例如:鏡中故我、春水初生..etc"
+response = model.generate_content(prompt_text)
+
+potions_names = response.text.split(',')
+print("符咒名稱列表: ", potions_names)
+print("第一個符咒名稱: ", potions_names[0])
+
+
+
+----------------------------
+
+
+import google.generativeai as genai
+import textwrap
+from IPython.display import Markdown
+
+story_elements = {
+    'hero_name':"咲夜",
+    'hometown' : "東方紅魔鄉",
+    'artifact' : "發動符卡產生巫術",
+    'goal':'打敗紅魔鄉潛藏的怪獸們'
+}
+
+super_prompt = f"""
+你的任務是成為一個專業的電影分鏡設計師。
+根據我提供的故事核心元素，請為主角的冒險旅程創作一個包含 5 個關鍵場景的故事板。
+
+**故事核心元素:**
+- 主角: {story_elements['hero_name']}
+- 家鄉: {story_elements['hometown']}
+- 尋找的神器: {story_elements['artifact']}
+- 目標: {story_elements['goal']}
+
+**輸出要求 (請嚴格遵守):**
+你必須以 Markdown 格式輸出。對於每一個場景，都必須包含以下兩個部分：
+1.  `### 場景 X: [場景標題]`：用三級標題表示場景序號和一個簡短的標題。
+2.  `**場景描述:**`：用粗體標示，後面跟上 2-3 句話的生動描述。
+3.  `**繪圖提示詞:**`：用粗體標示，後面跟上一段簡潔、高效、適合 AI 繪圖的英文提示詞 (逗號分隔的關鍵詞)。
+
+請開始創作這 5 個場景。
+"""
+
+print("正在向AI發送故事版創作請求,請稍後")
+try:
+  response = model.generate_content(super_prompt)
+  print("\n故事生成完畢")
+  display(Markdown(response.text))
+except Exception as e:
+  print(f'請求失敗 發生錯誤 {e}')
+
+  print('\n除錯建議')
+  print("檢查API金鑰是否正確設定")
+  print("檢查網路連線")
+  print("如果錯誤是安全設定，請修改故事中的詞語")
+----------------------------
+character_name = "A.H."
+story_scenes = [
+f'
+**分鏡一：戰火殘骸***   **場景：** 索蘭國郊外，戰場殘骸遍地，斷垣殘壁，燒焦的樹木，陰雨綿綿。*   **畫面：** A.H. (阿爾伯特·霍夫曼，約20多歲)，滿身泥濘，穿著破舊的索蘭軍隊下士軍服，神情疲憊而憤怒。他正站在一處高地上，俯瞰著滿目瘡痍的土地。遠處，一些衣衫襤褸的索蘭平民正在廢墟中撿拾東西。*   **音效：** 連續的雨聲，遠處傳來哀嚎和哭泣聲，隱約可聽見風吹過廢墟的呼嘯聲。*   **對白：** (內心獨白，A.H.，充滿憤怒和決心) 「這就是索蘭的下場嗎？屈辱，貧困，無止境的賠款...不，絕不！我會讓索蘭再次強大起來，讓那些掠奪我們的人付出代價！」'
+
+f'**分鏡二：廣場演講**'
+
+f'*   **場景：** 索蘭國首都的中央廣場，人山人海，擠滿了各個階層的索蘭民眾。'
+f'*   **畫面：** A.H. (現在約30多歲)，站在一個簡陋的講台上，慷慨激昂地演講。他身穿筆挺的黑色西裝，神情激動，揮舞著手臂。台下民眾情緒高漲，高呼口號。'
+f'*   **音效：** A.H.充滿力量和煽動性的演講聲，民眾熱烈的歡呼聲和口號聲，激昂的背景音樂。'
+f'*   **對白：** (A.H.，節選) 「索蘭的人民們！我們曾經遭受的苦難，是因為我們不夠強大！是因為那些貪婪的強盜奪走了我們的財富！我向你們保證，只要我們團結起來，重建我們的軍隊，重振我們的經濟，索蘭必將再次屹立於世界之林！我們要讓那些曾經羞辱我們的人，嘗到失敗的滋味！」'
+
+f'**分鏡三：總理辦公室**'
+
+f'*   **場景：** 索蘭國總理辦公室，裝飾簡潔而莊嚴。'
+f'*   **畫面：** A.H. (現在約40歲)，坐在寬大的辦公桌後，神情嚴肅。他身穿軍裝，桌上堆滿了文件和地圖。幾位高級將領和政府官員(女性，辣妹)，站在他面前，正在向他彙報工作。'
+f'*   **音效：** 沉穩的談話聲，紙張翻動的聲音，偶爾傳來筆在紙上書寫的聲音。'
+f'*   **對白：** (A.H.) 「軍隊的擴張進度如何？我們要確保在最短的時間內，擁有一支足以捍衛索蘭的強大軍隊。經濟方面呢？確保資源優先供應軍事需求，我們要為即將到來的...解放...做好準備。」'
+
+f'**分鏡四：邊境集結**'
+
+f'*   **場景：** 索蘭國邊境，與鄰國 (假設為「阿爾岡」) 相鄰。'
+f'*   **畫面：** 無數的索蘭士兵和坦克、裝甲車、火炮等重型武器，正在邊境集結。軍隊士氣高昂，正在進行最後的戰前準備。遠處，可以看見阿爾岡國邊境的哨塔和防禦工事。'
+f'*   **音效：** 隆隆的機械聲，士兵的口號聲，軍號聲，偶爾傳來幾聲犬吠。'
+f'*   **對白：** (一位年輕的索蘭士兵，對身邊的戰友) 「終於要開始了！為了索蘭的榮耀，為了洗刷我們的恥辱！我們要讓阿爾岡人知道，我們索蘭人不是好欺負的！」'
+]
+
+print("======你的冒現故事分鏡腳本======")
+
+for i, scene in enumerate(story_scenes):
+  prompt_for_image = f"""
+    你現在是一位專業的 AI 繪圖提示詞(prompt)工程師。
+    請為以下場景，生成一段適合輸入到 AI 繪圖工具 (如 Midjourney) 的英文提示詞。
+
+    **要求：**
+    1.  **格式**: 使用逗號分隔的關鍵字 (comma-separated keywords)。
+    2.  **內容**: 必須包含主體、動作、場景、畫風、光線和細節。
+    3.  **長度**: 總長度請盡量控制在 300 個字元，越簡單越好。
+    4.  **語言**: 全英文。
+
+    **場景：{scene}**
+    """
+  response = model.generate_content(prompt_for_image)
+  print(f'**場景{i+1}: {scene}**')
+  print(f"精簡後的ai繪圖提示詞:  {response.text}\n")
+
+-------------------------------
+
